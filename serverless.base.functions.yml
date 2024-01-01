@@ -9,3 +9,11 @@ MemoryDBExample:
           parameters:
             paths:
               surveyId: true
+  vpc:
+    securityGroupIds:
+      - Fn::GetAtt: [lambdaSG, GroupId]
+    subnetIds:
+      - Fn::GetAtt: [privateSubnetA, SubnetId]
+      - Fn::GetAtt: [privateSubnetB, SubnetId]
+  environment:
+    ClusterAddress: !GetAtt memoryDBCluster.ClusterEndpoint.Address
