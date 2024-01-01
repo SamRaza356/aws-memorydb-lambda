@@ -1,0 +1,11 @@
+MemoryDBExample:
+  handler: handler.example
+  events:
+    - http:
+        path: local/{surveyId}
+        method: get
+        cors: true
+        request:
+          parameters:
+            paths:
+              surveyId: true
